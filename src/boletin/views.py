@@ -10,13 +10,14 @@ from .forms import RegModelForm, ContactForm
 
 def inicio(request):
     titulo = "Esto es un titulo generado desde python"
+
     if request.user.is_authenticated:
         titulo = "Bienvenido %s" % (request.user)
     form = RegModelForm(request.POST or None)
-
     context = {
         "el_titulo": titulo,
         "el_form": form,
+        "el_user": request.user,
     }
 
     if form.is_valid():
@@ -35,6 +36,7 @@ def inicio(request):
 
 
 def contact(request):
+    titulo = "Formulario de contacto"
     form = ContactForm(request.POST or None)
     if form.is_valid():
         # for key, value in form.cleaned_data.items():
@@ -54,6 +56,7 @@ def contact(request):
                   email_to,
                   fail_silently=False)
     context = {
+        "el_titulo": titulo,
         "el_form": form,
     }
 

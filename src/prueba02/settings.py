@@ -24,7 +24,7 @@ SECRET_KEY = '5lk5%p8i%e7rq-sdmgpkmqe%r%@@l5#$!9w@&!tyq+r$mtfwfe'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["0.0.0.0", "127.0.0.1", "localhost"]
 
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_HOST_USER = "correo@gmail.com"

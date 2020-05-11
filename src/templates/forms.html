@@ -1,23 +1,20 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Página de inicio</title>
-</head>
-<body style="background-color:gray">
-<div style="text-align:center; color:gold; background-color: blue">
-    <h1>{{el_titulo}}</h1>
-    <h1>El usuario logueado es => {{request.user}}</h1>
+{% extends 'base.html' %}
+
+{% block head_title %}Formulario de contacto{% endblock %}
+
+{% block jumbotron_content %}
+
+<div style="text-align:center; color:white; background-color: black">
+    <h1>Bienvenido {{request.user}}</h1>
+     <h1>{{el_titulo}} </h1>
 </div>
+{% endblock %}
+{% block content %}
+
 </p>
-
-
 <form method="POST" action="">{% csrf_token %}
     {{el_form.as_p}}
-    <input type="submit" value="Registrar"/>
+    <input class="btn btn-lg btn-primary" type="submit" value="Registrar"/>
 </form>
 
-<a href="../">Volver</a>
-
-</body>
-</html>
+{% endblock %}

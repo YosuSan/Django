@@ -22,7 +22,7 @@ from src.boletin.views import inicio, contact
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', inicio, name='inicio'),
+    path('home/', inicio, name='inicio'),
     path('contact/', contact, name='contacto'),
 
 ]

@@ -6,7 +6,7 @@ from boletin.models import Registrado
 class RegModelForm(forms.ModelForm):
     class Meta:
         model = Registrado
-        fields = ["nombre", "email"]
+        fields = ("nombre", "email",)
 
     def clean_email(self):
         email = self.cleaned_data.get("email")
@@ -30,9 +30,9 @@ class RegModelForm(forms.ModelForm):
 
 
 class ContactForm(forms.Form):
-    nombre = forms.CharField(required=False)
-    email = forms.EmailField()
-    mensaje = forms.CharField(widget=forms.Textarea)
+    nombre = forms.CharField(required=False, widget=forms.TextInput(attrs={'class': "form-control form-control"}))
+    email = forms.EmailField(widget=forms.TextInput(attrs={'class': "form-control form-control"}))
+    mensaje = forms.CharField(widget=forms.Textarea(attrs={'class': "form-control form-control-lg"}))
 
     def clean_mensaje(self):
         mensaje = self.cleaned_data.get("mensaje")
