@@ -4,9 +4,9 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-<!--    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
     <meta name="description" content="">
     <meta name="generator" content="Jekyll v3.8.6">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>{% block head_title %}Pruebas Django{% endblock %}</title>
 
     {% include 'head_css.html' %}
@@ -17,19 +17,23 @@
 <body style="background:gray">
 
 {% include "navbar.html" %}
+<div class="container-fluid">
+    <div class="row">
 
-<div role="main" class="container">
-    {% block jumbotron %}
-    <div class="jumbotron">
-        {% block jumbotron_content%}
+        <div role="main" class="container">
+            {% block jumbotron %}
+            <div class="jumbotron">
+                {% block jumbotron_content%}
 
-        {% endblock %}
+                {% endblock %}
 
+            </div>
+            {% endblock %}
+
+            {% block content %}
+            {% endblock %}
+        </div>
     </div>
-    {% endblock %}
-
-    {% block content %}
-    {% endblock %}
 </div>
 </body>
 </html>

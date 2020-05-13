@@ -32,7 +32,7 @@ class RegModelForm(forms.ModelForm):
 class ContactForm(forms.Form):
     nombre = forms.CharField(required=False, widget=forms.TextInput(attrs={'class': "form-control form-control"}))
     email = forms.EmailField(widget=forms.TextInput(attrs={'class': "form-control form-control"}))
-    mensaje = forms.CharField(widget=forms.Textarea(attrs={'class': "form-control form-control-lg"}))
+    mensaje = forms.CharField(widget=forms.Textarea(attrs={'class': "form-control"}))
 
     def clean_mensaje(self):
         mensaje = self.cleaned_data.get("mensaje")

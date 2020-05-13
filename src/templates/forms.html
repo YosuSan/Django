@@ -6,15 +6,16 @@
 
 <div style="text-align:center; color:white; background-color: black">
     <h1>Bienvenido {{request.user}}</h1>
-     <h1>{{el_titulo}} </h1>
+    <h1>{{el_titulo}} </h1>
 </div>
 {% endblock %}
 {% block content %}
 
 </p>
-<form method="POST" action="">{% csrf_token %}
-    {{el_form.as_p}}
-    <input class="btn btn-lg btn-primary" type="submit" value="Registrar"/>
-</form>
-
+<div class="container p-3 my-3 bg-dark text-white">
+    <form method="POST" action="">{% csrf_token %}
+        {{el_form.as_p}}
+        <input class="btn btn-lg btn-primary" type="submit" value="Registrar"/>
+    </form>
+</div>
 {% endblock %}
