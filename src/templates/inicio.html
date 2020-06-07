@@ -1,24 +1,22 @@
 {% extends 'base.html' %}
 
-{% block head_title %}Bienvenido | {{user}} {{ block.super }}{% endblock %}
 
 
-{% block jumbotron_content %}
-<div style="text-align:center; color:gold; background-color: blue">
-    <h1>{{el_titulo}}</h1>
-    <h1>El usuario logueado es => {{request.user}}</h1>
+{% block jumbo %}
+
+<div class="jumbotron">
+    <h1>Navbar example</h1>
+    <p class="lead">Hola {{user}}</p>
+    <a class="btn btn-lg btn-danger" href="#" role="button">BOTON INUTIL</a>
 </div>
-<h1>INICIO</h1>
-<p class="lead">This example is a quick exercise to illustrate how the top-aligned navbar works. As you scroll,
-    this navbar remains in its original position and moves with the rest of the page.</p>
-<a class="btn btn-lg btn-primary" href="#" role="button">View navbar docs &raquo;</a>
-</p>
 {% endblock %}
-
 {% block content %}
-<form method="POST" action="">{% csrf_token %}
-    <div class="">{{el_form.as_ul}}</div>
-    <input class="btn btn-lg btn-primary" type="submit" value="Registrar"/>
-
-</form>
+{% if form %}
+<div class="form-group">
+    <form class="" method="POST" action="">{% csrf_token %}
+        {{form.as_p}}
+        <input class="btn-primary" type="submit" id="submit" value="Registrar"/>
+    </form>
+</div>
+{% endif %}
 {% endblock %}

@@ -1,39 +1,25 @@
-<!doctype html>
+<!DOCTYPE html>
 {% load static %}
-
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="description" content="">
-    <meta name="generator" content="Jekyll v3.8.6">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>{% block head_title %}Pruebas Django{% endblock %}</title>
+    <title>Bienvenido {{user}}</title>
 
     {% include 'head_css.html' %}
-    {% include 'javascript.html' %}
-
 
 </head>
-<body style="background:gray">
 
-{% include "navbar.html" %}
-<div class="container-fluid">
-    <div class="row">
+<body>
 
-        <div role="main" class="container">
-            {% block jumbotron %}
-            <div class="jumbotron">
-                {% block jumbotron_content%}
+{% include 'navbar.html' %}
 
-                {% endblock %}
+<main role="main" class="container">
+    {% block jumbo %}{% endblock %}
+    {% block content %}{% endblock %}
 
-            </div>
-            {% endblock %}
 
-            {% block content %}
-            {% endblock %}
-        </div>
-    </div>
-</div>
+</main>
+
+{% include 'javascript.html' %}
 </body>
 </html>

@@ -3,21 +3,21 @@ from django.core.mail import send_mail
 from django.shortcuts import render
 
 from .forms import RegModelForm, ContactForm
+from .models import Registrado
 
 
 # Create your views here.
 
 
 def inicio(request):
-    titulo = "Esto es un titulo generado desde python"
-
+    titulo = "HOLA"
     if request.user.is_authenticated:
-        titulo = "Bienvenido %s" % (request.user)
+        titulo = "Bienvenido %s" % request.user
     form = RegModelForm(request.POST or None)
+
     context = {
-        "el_titulo": titulo,
-        "el_form": form,
-        "el_user": request.user,
+        "titulo": titulo,
+        "form": form,
     }
 
     if form.is_valid():
@@ -25,39 +25,49 @@ def inicio(request):
         nombre = form.cleaned_data.get("nombre")
         email = form.cleaned_data.get("email")
         if not nombre:
-            instance.nombre = "Persona"
+            nombre = "Nombre por defecto"
+            instance.nombre = nombre
         instance.save()
-        if not nombre:
-            nombre = "persona sin nombre"
+        print(instance)
+        print(instance.timestamp)
         context = {
-            "el_titulo": "Gracias %s" % (nombre),
+            "titulo": "Gracias %s!" % nombre,
         }
+
+        # form_data = form.cleaned_data
+        # nombre = form_data.get("nombre")
+        # email = form_data.get("email")
+        # print("Todo form", form_data)
+        # print("Nombre", nombre)
+        # print("Email:", email)
+        # obj = Registrado.objects.create(email=email, nombre=nombre)
+
     return render(request, "inicio.html", context)
 
 
-def contact(request):
-    titulo = "Formulario de contacto"
+def contacto(request):
     form = ContactForm(request.POST or None)
     if form.is_valid():
-        # for key, value in form.cleaned_data.items():
-        #     print(key, ":", value)
         # for key in form.cleaned_data:
         #     print(key, ":", form.cleaned_data.get(key))
-        form_email = form.cleaned_data.get("email")
-        form_nombre = form.cleaned_data.get("nombre")
-        form_mensaje = form.cleaned_data.get("mensaje")
+        email = form.cleaned_data.get("email")
+        mensaje = form.cleaned_data.get("mensaje")
+        nombre = form.cleaned_data.get("nombre")
         asunto = "Form de contacto"
-        email_from = settings.EMAIL_HOST_USER
-        email_to = [email_from]
-        email_mensaje = "%s: %s enviado por %s" % (form_nombre, form_mensaje, form_email)
-        send_mail(asunto,
-                  email_mensaje,
-                  email_from,
-                  email_to,
-                  fail_silently=False)
+        if settings.EMAIL_HOST_USER != "xxx@xxx.xxx":
+            email_from = settings.EMAIL_HOST_USER
+            email_to = [email_from, "otro@correo.pepino"]
+            email_mensaje = "%s:\n%s \nEnviado por %s" % (nombre, mensaje, email)
+            send_mail(asunto,
+                      email_mensaje,
+                      email_from,
+                      email_to,
+                      fail_silently=True
+                      )
+        else:
+            print(email, nombre, mensaje)
     context = {
-        "el_titulo": titulo,
-        "el_form": form,
+        "form": form,
     }
 
     return render(request, "forms.html", context)

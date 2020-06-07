@@ -1,21 +1,28 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{titulo}}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
-{% block head_title %}Formulario de contacto{% endblock %}
-
-{% block jumbotron_content %}
-
-<div style="text-align:center; color:white; background-color: black">
-    <h1>Bienvenido {{request.user}}</h1>
-    <h1>{{el_titulo}} </h1>
+</head>
+<body>
+<div class="container">
+    <div class="clearfix rounded-circle bg-warning">
+        <h2 class="text-center">{{user}}</h2>
+    </div>
+    <a class="btn btn-primary float-right" href="../inicio">Inicio</a>
+    {% if form %}
+    <div class="form-group">
+        <form class="" method="POST" action="">{% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" id="submit" value="Registrar"/>
+        </form>
+    </div>
+    {% endif %}
 </div>
-{% endblock %}
-{% block content %}
-
-</p>
-<div class="container p-3 my-3 bg-dark text-white">
-    <form method="POST" action="">{% csrf_token %}
-        {{el_form.as_p}}
-        <input class="btn btn-lg btn-primary" type="submit" value="Registrar"/>
-    </form>
-</div>
-{% endblock %}
+</body>
+</html>
