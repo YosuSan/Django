@@ -1,6 +1,6 @@
 from django import forms
 
-from src.boletin.models import Registrado
+from boletin.models import Registrado
 
 
 class RegModelForm(forms.ModelForm):

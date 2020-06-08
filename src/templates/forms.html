@@ -1,28 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{titulo}}</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-
-</head>
-<body>
+{% extends 'base.html' %}
+{% block content %}
 <div class="container">
-    <div class="clearfix rounded-circle bg-warning">
-        <h2 class="text-center">{{user}}</h2>
-    </div>
-    <a class="btn btn-primary float-right" href="../inicio">Inicio</a>
     {% if form %}
-    <div class="form-group">
-        <form class="" method="POST" action="">{% csrf_token %}
-            {{form.as_p}}
-            <input type="submit" id="submit" value="Registrar"/>
+    <div class="form-group jumbotron">
+        <form class="text-center" method="POST" action="">{% csrf_token %}
+            <span class="font-weight-bold" id="nombre">Nombre: {{form.nombre}}</span>
+            <span class="font-weight-bold" id="email">Email: {{form.email}}</span>
+            <br/><br/>
+            <span class="font-weight-bold" id="mensaje">Mensaje:</span>
+            <br/>
+            {{form.mensaje}}
+            <br/>
+            <input class="btn btn-primary" type="submit" id="submit"  value="Registrar"/>
         </form>
     </div>
     {% endif %}
 </div>
-</body>
-</html>
+
+{% endblock %}
