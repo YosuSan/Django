@@ -1,14 +1,16 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 
-{% block jumbo %}
-<div class="row">
-    <div class="col-sm-6">
-        <h1>Navbar example</h1>
-        <p class="lead">Hola {{user}}</p>
-        <a class="btn btn-lg btn-danger" href="{% url 'inicio' %}" role="button">BOTON INUTIL</a>
-    </div>
-    <div class="col-sm-6" style="background-color:black;height:300px;">
+{% block jumbotron %}
+<div class="jumbotron">
+    <div class="row">
+        <div class="col-sm-6">
+            <h1>Navbar example</h1>
+            <p class="lead">Hola {{user}}</p>
+            <a class="btn btn-lg btn-danger" href="{% url 'inicio' %}" role="button">BOTON INUTIL</a>
+        </div>
+        <div class="col-sm-6" style="background-color:black;height:300px;">
+        </div>
     </div>
 </div>
 {% endblock %}

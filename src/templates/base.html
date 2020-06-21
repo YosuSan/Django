@@ -9,14 +9,12 @@
 
 </head>
 
-<body>
+<body class="bg-secondary">
 
 {% include 'navbar.html' %}
 
 <div role="main" class="container">
-    <div class="jumbotron">
-        {% block jumbo %}{% endblock %}
-    </div>
+{% block jumbotron %}{% endblock %}
 {% block content %}{% endblock %}
 </div>
 {% include 'javascript.html' %}

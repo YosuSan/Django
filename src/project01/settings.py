@@ -38,14 +38,17 @@ EMAIL_USE_TLS = True
 
 INSTALLED_APPS = [
     #Django apps
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     #3th party apps
     'crispy_forms',
+    'registration',
     #My apps
     'boletin',
 ]
@@ -61,8 +64,6 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'project01.urls'
-
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 TEMPLATES = [
     {
@@ -141,3 +142,8 @@ STATICFILES_DIRS = [
 
 STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_env", "static_root")
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_env", "media_root")
+
+
+ACCOUNT_ACTIVATION_DAYS = 7
+REGISTRATION_AUTO_LOGIN = False
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
