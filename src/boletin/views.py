@@ -46,6 +46,7 @@ def inicio(request):
 
 
 def contacto(request):
+    titulo = "Contacto"
     form = ContactForm(request.POST or None)
     if form.is_valid():
         # for key in form.cleaned_data:
@@ -68,6 +69,7 @@ def contacto(request):
             print(email, nombre, mensaje)
     context = {
         "form": form,
+        "titulo": titulo,
     }
 
     return render(request, "forms.html", context)

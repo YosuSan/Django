@@ -1,15 +1,22 @@
 {% extends "base.html" %}
 {% load i18n %}
+{% load crispy_forms_tags %}
 
 {% block content %}
-<form method="post" action=".">
-  {% csrf_token %} 
-  {{ form.as_p }}
+{% block accounts %}
+<div class="col-sm-6 offset-3 bg-white rounded-lg">
+    <h2 class="text-center"><strong>Iniciar sesión</strong></h2>
+    <form method="post" action=".">
+        {% csrf_token %}
+        {{ form|crispy}}
 
-  <input type="submit" value="{% trans 'Iniciar sesion' %}" />
-  <input type="hidden" name="next" value="{{ next }}" />
-</form>
+        <input class="btn btn-primary"type="submit" value="{% trans 'Iniciar sesion' %}"/>
+        <input type="hidden" name="next" value="{{ next }}"/>
+    </form>
 
-<p>{% trans "Has olvidado tu contrasena" %}? <a href="{% url 'auth_password_reset' %}">{% trans "Restablecer" %}</a>!</p>
-<p>{% trans "No tienes cuenta" %}? <a href="{% url 'registration_register' %}">{% trans "Registrarte" %}</a>!</p>
+    <p>{% trans "Has olvidado tu contrasena" %}? <a href="{% url 'auth_password_reset' %}">{% trans "Restablecer" %}</a>!
+    </p>
+    <p>{% trans "No tienes cuenta" %}? <a href="{% url 'registration_register' %}">{% trans "Registrarte" %}</a>!</p>
+</div>
+{% endblock %}
 {% endblock %}

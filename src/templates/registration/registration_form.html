@@ -3,7 +3,8 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-<div class="col-sm-6 offset-3 bg-white">
+{% block accounts %}
+<div class="col-sm-6 offset-3 bg-white rounded-lg">
     <h2 class="text-center"><strong>Registrar Usuario</strong></h2>
     <form method="post" action=".">
         {% csrf_token %}
@@ -13,4 +14,5 @@
     </form>
     <br/>
 </div>
+{% endblock %}
 {% endblock %}

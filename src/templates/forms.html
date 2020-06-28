@@ -1,20 +1,27 @@
 {% extends 'base.html' %}
-{% block content %}
-<div class="container">
-    {% if form %}
-    <div class="form-group jumbotron">
-        <form class="text-center" method="POST" action="">{% csrf_token %}
-            <span class="font-weight-bold" id="nombre">Nombre: {{form.nombre}}</span>
-            <span class="font-weight-bold" id="email">Email: {{form.email}}</span>
-            <br/><br/>
-            <span class="font-weight-bold" id="mensaje">Mensaje:</span>
-            <br/>
-            {{form.mensaje}}
-            <br/>
-            <input class="btn btn-primary" type="submit" id="submit"  value="Registrar"/>
-        </form>
-    </div>
-    {% endif %}
-</div>
+{% load crispy_forms_tags %}
 
+{% block content %}
+<p/>
+<div class="row">
+    <div class="col-sm-6 offset-3">
+        {% if titulo %}
+        <h1 class="text-center bg-dark text-white rounded-lg">{{titulo}}</h1>
+        {% endif %}
+        {% if form|crispy %}
+        <div class="form-group jumbotron">
+            <form class="" method="POST" action="">{% csrf_token %}
+                <span class="font-weight-bold" id="nombre">Nombre: {{form.nombre}}</span>
+                <span class="font-weight-bold" id="email">Email: {{form.email}}</span>
+                <br/><br/>
+                <span class="font-weight-bold" id="mensaje">Mensaje:</span>
+                <br/>
+                {{form.mensaje}}
+                <br/>
+                <input class="btn btn-primary" type="submit" id="submit" value="Enviar"/>
+            </form>
+        </div>
+        {% endif %}
+    </div>
+</div>
 {% endblock %}

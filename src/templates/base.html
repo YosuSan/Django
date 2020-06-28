@@ -6,20 +6,29 @@
     <title>Bienvenido {{user}}</title>
 
     {% include 'head_css.html' %}
+    <style>
+        {% block style %}{% endblock %}
+    </style>
 
 </head>
 
-<body>
+<body class="bg-secondary">
 
 {% include 'navbar.html' %}
+{% if user.is_authenticated %}
+{% block jumbotron %}{% endblock %}
+{% endif %}
 
-<main role="main" class="container">
-    {% block jumbo %}{% endblock %}
+<div role="main" class="container">
+    {% if user.is_authenticated %}
     {% block content %}{% endblock %}
+    {% else %}
+    {% block accounts %}{% endblock %}
+    {% endif %}
+</div>
 
-
-</main>
 
 {% include 'javascript.html' %}
+
 </body>
 </html>
