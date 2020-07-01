@@ -85,5 +85,25 @@ font-size: 6em !important;
 
 </div>
 {% endif %}
+{% if queryset %}
+<div class="col-sm-8 offset-2 text-center">
+    <table class="table-hover table-bordered">
+        <thead class="table-primary ">
+        <td>Contador</td>
+        <td>Nombre</td>
+        <td>Email</td>
+        <td>Timestamp</td>
+        </thead>
+        {% for query in queryset %}
+        <tr class="table-info">
+            <td>{{forloop.counter}}</td>
+            <td>{{query.nombre}}</td>
+            <td>{{query.email}}</td>
+            <td>{{query.timestamp}}</td>
+        </tr>
+    {% endfor %}
+     </table>
+</div>
+{% endif %}
 {% endblock %}
 
